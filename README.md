@@ -1,5 +1,9 @@
-# HW 3 definition
-## Fill TODO comments of the script functions.py
+# HW 4 definition
+## Write functions from file functions.py according to the comments
+Note: To apply only discussed on the lessons Python types
+## Write print-tests script with print calls allowing you to test the functions
+Note: To apply the string interpolation for informativeness
+
 
 
 

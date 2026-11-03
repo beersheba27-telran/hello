@@ -1,4 +1,12 @@
-a: int = int("20000")
-b: int = int("20000")
-print(f"a == b is {a == b}")
-print(f"a is b is {a is b}")
+a = 50000
+b = a
+d = 100000
+print(b is a)# TRue
+def double(c: int) :
+    res: int = c * 2
+    print(a is c) #True
+    return res
+a = double(a)
+print(b is a) #False
+print (a == d) #True
+print (a is d) #False

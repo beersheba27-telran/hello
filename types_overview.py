@@ -1,23 +1,18 @@
-a: int = 10
-if a: #10 considered as True
-    print (True)
-l: list[int] = [0, 0, 0] 
-print (bool(l))  
-if 0: #0 considered as False
-    print(True)
-else:
-    print(False) 
-# "False"  => True
-# "" => False
-# " " =? True
-# [] =? False
-if " ": print("space is True") 
-n: None = None
-if n is None: print("a is None")
-if n: 
-    print ("n containing None is True")
-else:
-    print ("n containing None is False")
-# a = None  since a is defined as int  
+l1:list[int] = list(range(100000))
+t1: tuple[int,...] = tuple(l1)
+t2: tuple[str, int] = "1", 2
 
+def strNumberPresentation(num: int) -> tuple[str, int]:
+    strPr: str = ""
+   
+    if num == 1:
+        strPr = "one"
+    elif num == 2:
+        strPr = "two"
+    else:
+        strPr = str(num)
+    return strPr, num  
+print(strNumberPresentation(1))  
+print(strNumberPresentation(2))
+print(strNumberPresentation(20))
 

@@ -1,8 +1,11 @@
-numbers: list[int] = [100, 150, -10, -3, 110]
-sorted_part = sorted(numbers[1:4]) #[-10, -3, 150]
-numbers[1:4] = sorted_part
-print(numbers) #[100,  -10, -3, 150, 110]
-numbers[3:3] = [80]
-print(numbers)#[100,  -10, -3, 80, 150, 110]
-numbers[3:4]=[90, 130]
-print(numbers) #[100,  -10, -3, 90,130 150, 110]
+text: list[str] = ["Vasya", "aaaaaaa", "bbbb","BBB" ]
+print(sorted(text))# ['BBB', 'Vasya', 'aaaaaaa', 'bbbb']
+print(sorted(text,key=len)) #['BBB', 'bbbb', 'Vasya', 'aaaaaaa']
+print(sorted(text,key=lambda s: s.upper()))
+numbers: list[int] = [20, -3, -10, 30]
+print(sorted(numbers)) # [-10, -3, 20, 30]
+print(sorted(numbers, key=abs))# [-3, -10, 20, 30]
+pairs: list[tuple[int, int]] = [(1,100), (-1, 1000), (1, -100), (-1, -10)]
+print(sorted(pairs))#[(-1, -10), (-1, 1000), (1, -100), (1, 100)]
+
+

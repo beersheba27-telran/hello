@@ -9,7 +9,10 @@ sorted_len_str = ["B", "w", "bb", "cc", "lmn", "aaaaaaa"]
 sorted_strings = ["B", "aaaaaaa", "bb", "cc", "lmn", "w"]
 part1 = [3, 5, 7, -11 ]
 part2 = [ 0, 4, -10, -20 ]
-merge_expected = [ 0, 3, 4, 5, 7, -10, -11,-20]
+part1_sorted = sorted(part1)
+part2_sorted = sorted(part2)
+merge_expected = [ -20, -11, -10, 0, 3, 4, 5, 7]
+merge_expected_abs = [ 0, 3, 4, 5, 7, -10, -11,-20]
 unittest_print.print_test(f"Sort of list {numbers}", sorted_numbers,\
                            functions.bubble_sorted(numbers) )
 unittest_print.print_test(f"Sort of list {numbers} according to abs values", sorted_numbers_abs,\
@@ -20,6 +23,9 @@ unittest_print.print_test(f"Sort of list {numbers} according to even first in As
 unittest_print.print_test(f"Sort of list {strings} ",sorted_len_str ,\
                            functions.bubble_sorted(strings, lambda s: (len(str(s)), s)) )
 
-unittest_print.print_test(f"merge of two parts {part1} and {part2} according to abs values",\
-                          merge_expected, functions.merge(part1, part2, abs) )# pyright: ignore[reportArgumentType]
+unittest_print.print_test(f"merge of two parts {(part1_sorted)} and {part2_sorted}",\
+                          merge_expected, functions.merge(part1_sorted, part2_sorted) )
+unittest_print.print_test(f"merge of two parts {part1} and {part2}  according to abs values",\
+                          merge_expected_abs, functions.merge(part1, part2, abs) )# pyright: ignore[reportArgumentType]
+
 unittest_print.print_results()

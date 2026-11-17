@@ -1,11 +1,20 @@
-from typing import Callable
+def subtract(op1: int, op2: int)->float:
+    # parameters are either positional or named
+    return op1 - op2
 
-div:Callable[[int, int], float]  = lambda a, b : a / b 
+ # positional arguments
+print(subtract(20, 10)) # 10
+# named arguments
+print(subtract(op1=20, op2=10)) # 10
 
+def div(op1: int, op2: int,/)->float:
+    # parameters are only the positioanal ones
+    return op1 / op2
 
-def compute(op1: int, op2: int, fun: Callable[[int, int], float] )->float:
-    result: float = fun(op1, op2)
-    return result
+print(div(20, 10))
 
-print(compute(2,2,lambda op1, op2: op1 + op2)) #4
-print(compute(2,2,div)) #1
+def mult(*, op1:int, op2: int)->float:
+    # only key parameters
+    return op1 * op2
+
+print(mult(op2=10, op1=20))

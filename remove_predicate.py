@@ -5,12 +5,15 @@ def remove_predicate[T](items: list[T], /, *, pred: Callable[[T], bool] )->None:
     """
     space complexity O[1]
     removing in-place items matching a given preedicate
-    complexity O[N] even if no item matching a given pred exists
+    based on method of one list and two indices
+    O[N] most effective
     """
-    for item in items:
-        if pred(item):
-            items.remove(item)
-
+    j: int = 0
+    for i in range(len(items)):
+        if not pred(items[i]):
+           items[j] = items[i]
+           j += 1
+    del items[j:]
 lst = [i for i in range(10)]  
 res = lst.copy()
 remove_predicate(res, pred=lambda num: num % 2 == 0)  

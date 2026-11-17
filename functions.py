@@ -59,9 +59,8 @@ def  merge[T](part1: Sequence[T], part2: Sequence[T], key: Callable[[T], T]|None
         else:
             result.append(part1[i1])
             i1 += 1
-    lenRes = len(result)        
-    result[lenRes:lenRes] = part1[i1:] 
-    result[lenRes:lenRes] = part2[i2:]
+    result.extend(part1)
+    result.extend(part2)
     return result     
         
    

@@ -16,7 +16,7 @@ merge_expected_abs = [ 0, 3, 4, 5, 7, -10, -11,-20]
 unittest_print.print_test(f"Sort of list {numbers}", sorted_numbers,\
                            functions.bubble_sorted(numbers) )
 unittest_print.print_test(f"Sort of list {numbers} according to abs values", sorted_numbers_abs,\
-                           functions.bubble_sorted(numbers, abs ) ) # pyright: ignore[reportArgumentType]
+                           functions.bubble_sorted(numbers, abs ) )
 unittest_print.print_test(f"Sort of list {numbers} according to even first in Asc, odd after even in Desc",sorted_even_odd ,\
                            functions.even_asc_odd_desc(numbers) )
 
@@ -26,6 +26,6 @@ unittest_print.print_test(f"Sort of list {strings} ",sorted_len_str ,\
 unittest_print.print_test(f"merge of two parts {(part1_sorted)} and {part2_sorted}",\
                           merge_expected, functions.merge(part1_sorted, part2_sorted) )
 unittest_print.print_test(f"merge of two parts {part1} and {part2}  according to abs values",\
-                          merge_expected_abs, functions.merge(part1, part2, abs) )# pyright: ignore[reportArgumentType]
+                          merge_expected_abs, functions.merge(part1, part2, abs) )
 
 unittest_print.print_results()

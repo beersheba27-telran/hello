@@ -1,38 +1,28 @@
-from typing import Callable
-def __move_min2_to_place[T,K](items: list[T],/,*, start: int, stop: int,key: Callable[[T], T|K] ):
-    while start < stop and key(items[start]) > key(items[start + 1]): # type: ignore
-        items[start], items[start + 1] = items[start + 1], items[start]
-        start += 1
+from typing import Callable, Sequence
 
 
-
-
-               
-def merge_in_place[T,K](items: list[T], start: int, len1: int, size: int ,\
-                       key: Callable[[T], K|T]|None=None)->None:
+def get_all_range(numbers: Sequence[int], allowed: range|None = None)->list[int]:
     """
-    merges two sorted by key subparts in place of a list's part
-    Space complexity O[1] no additional list is created
-    items - list of T objects (T any type generic at call time)
-    start - start index of a being merged list
-    len1 - length of the first subpart
-    size - length of whole part
-    Example: items - [3, 5, 7, -11, 0, 4, -10, -20, 100, -80,-4, 8 ], key - abs function
-    start - 0; len1 - 4; size - 8
-    call as  merge_in_place(items, start=0, len1=4, size=8, key=abs)
-    updated itesms should be as [0, 3, 4, 5, 7, -10, -11, -20, 100, -80,-4, 8]
+    numbers - sorted list of numbers in ascending order
+   allowed - range of numbers (may be empty)
+    returns list of numbers that greater or equal minimal value of range and less than maximal value 
+    for empty range the function returns the empty list
+    for missed second argument the function returns the same "numbers"
     """
-    if 0 < len1 < size and start >= 0 and start + size <= len(items): # avoid empty subparts
-        i_min_2 = start + len1
-        stop = start + size - 1
-        i =start
-        i_max_1 = start + len1 - 1
-        if key is None:
-            key = lambda a: a
-        while (key_min2:=key(items[i_min_2])) < key(items[i_max_1]) : # type: ignore
-            if key(items[i]) > key_min2: # type: ignore
-                items[i], items[i_min_2] = items[i_min_2], items[i]
-                __move_min2_to_place(items, start=i_min_2, stop=stop, key=key)
-            i += 1    
-                                    
-        
+def get_all_not_in_range(numbers: Sequence[int], disallowed: range)->list[int] :
+    """
+    numbers - sorted list of numbers in ascending order 
+    disallowed - range of numbers (may be empty)
+     returns list of numbers from "numbers" that are not in a given range
+    """
+def my_sorted[T, K](items: Sequence[T],/,*, key:Callable[[T], T|K]|None=None) -> list[T]:
+    """
+    returns sorted by key list
+    implementation according the following algorithm:
+    "items" is divided on the parts, each of which contains sqrt(len(items)) items
+    Each part should be sorted separately by bubble sorting algorithm that you have already implemented
+    After that all parts should be merged.
+    No limitations for extra space
+    Note: To use "sqrt" function from the module "math". This function returns float type
+        so you should apply function "int" and the last part may contain more items
+    """      

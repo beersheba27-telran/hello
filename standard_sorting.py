@@ -1,14 +1,11 @@
 from bisect import  insort
 from random import randint
 """
-Example of insort introduction
+Example of insort use case "keeping a list sorted"
 Note: insort has time complexity O[N]
-
-
 """
 sorted_numbers: list[int] = []
-numbers: list[int] = [randint(1, 10) for _ in range(10)]
-print(numbers)
-for num in numbers:
-    insort(sorted_numbers, num)
-print(sorted_numbers)    
+for _ in range(10):
+    insort(sorted_numbers, randint(1, 10))
+
+print(sorted_numbers)

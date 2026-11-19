@@ -1,5 +1,5 @@
 from typing import Callable
-def __move_min2_to_place[T](items: list[T],/,*, start: int, stop: int,key: Callable[[T], T] ):
+def __move_min2_to_place[T,K](items: list[T],/,*, start: int, stop: int,key: Callable[[T], T|K] ):
     while start < stop and key(items[start]) > key(items[start + 1]): # type: ignore
         items[start], items[start + 1] = items[start + 1], items[start]
         start += 1
@@ -8,8 +8,8 @@ def __move_min2_to_place[T](items: list[T],/,*, start: int, stop: int,key: Calla
 
 
                
-def merge_in_place[T](items: list[T], start: int, len1: int, size: int ,\
-                       key: Callable[[T], T]|None=None)->None:
+def merge_in_place[T,K](items: list[T], start: int, len1: int, size: int ,\
+                       key: Callable[[T], K|T]|None=None)->None:
     """
     merges two sorted by key subparts in place of a list's part
     Space complexity O[1] no additional list is created

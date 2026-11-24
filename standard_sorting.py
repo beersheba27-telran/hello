@@ -1,6 +1,10 @@
-from bisect import  bisect_left, bisect_right
-strings: list[str] =[ "lmn", "y", "aaaaa", "bb", "ddd"]
-strings.sort(key=len)
-print(strings)
-print(strings[bisect_left(strings, 3, key=len):bisect_right(strings, 3, key=len)])
+from sortedcontainers import SortedList
+numbers: SortedList[int] = SortedList([10, 5, -100, 20]);
+print(numbers)
+print([num for num in numbers])
+print(numbers.bisect_left(3))# 1
+print(numbers.bisect_right(3))# 1
+numbers.add(3)
+print(numbers.bisect_left(3))# 1
+print(numbers.bisect_right(3))# 2
 

@@ -1,6 +1,7 @@
-# HW 10 definition
-## Write functions  according to the comments in the file functions.py
-## Write tests in the separate module
+# HW 11 definition
+## Write function my_sorted  according to the comments in the file functions.py
+## print_tests.py contains 
+- Make sure all tests passed
 
 
 

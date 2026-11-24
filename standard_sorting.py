@@ -1,10 +1,13 @@
 from sortedcontainers import SortedKeyList
-numbers: SortedKeyList[int] = SortedKeyList([10, 5, -100, 20], str);
-print(numbers)
-print([num for num in numbers])
-print(numbers.bisect_left(3))# 3
-print(numbers.bisect_right(3))# 3
-numbers.add(3)
-print(numbers.bisect_left(3))# 3
-print(numbers.bisect_right(3))# 4
+persons: SortedKeyList[tuple[str, int]] =\
+ SortedKeyList([("Vasya", 10), ("Kolya", 60),("Abram", 60)], lambda p: p[1]);
+print(persons)
+print([person for person in persons])
+print(persons.bisect_left(("", 60)))#1
+print(persons.bisect_right(("", 60)))#3
+print(persons.bisect_key_left(60))#1
+print(persons.bisect_key_right( 60))#3
+
+
+
 

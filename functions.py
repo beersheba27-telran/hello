@@ -1,6 +1,6 @@
 from bisect import bisect_left
 from math import sqrt
-from typing import Callable, Sequence
+from typing import Callable, Sequence, cast
 def __move_max_to_end[T, K](items: list[T], start: int, size: int,\
                              key: Callable[[T], T|K])->int:
     nSwaps = 0
@@ -52,7 +52,7 @@ def get_all_range(numbers: Sequence[int], allowed: range|None = None)->list[int]
     for empty range the function returns the empty list
     for missed second argument the function returns the same "numbers"
     """
-    result:list[int] = list(numbers)
+    result:list[int] = cast(list[int], numbers)
     if allowed is not None:
         result = []
         if len(allowed) != 0:

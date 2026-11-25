@@ -4,7 +4,7 @@ from functions import  my_sorted
 from unittest_print import print_results, print_test
 from random import randint
 numbers: list[int] = [-10, -3, 1, 20, 25, 30, 40, 41]
-N_ITEMS = 1023
+N_ITEMS = 1022
 unsorted_numbers: list[int] = [randint(1, 100000) for _ in range(N_ITEMS)]
 sorted_numbers_by_str: list[int]=my_sorted(unsorted_numbers, key=lambda a: str(a))
 sorted_numbers: list[int]=my_sorted(unsorted_numbers)

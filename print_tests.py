@@ -10,7 +10,7 @@ sorted_numbers_by_str: list[int]=my_sorted(unsorted_numbers, key=lambda a: str(a
 sorted_numbers: list[int]=my_sorted(unsorted_numbers)
 test_numbers = [20, -10, 1, 30, -11, 1,-50]
 test_numbers_sorted = my_sorted(test_numbers)
-
+my_sorted([])
 def is_sorted[T,K](lst: list[T], key:Callable[[T], T|K]|None=None)-> bool:
     lim = len(lst) - 1
     i = 0
@@ -19,9 +19,12 @@ def is_sorted[T,K](lst: list[T], key:Callable[[T], T|K]|None=None)-> bool:
     while i < lim and key(lst[i]) <= key(lst[i + 1]): # type: ignore
         i += 1
     return i >= lim    
-
+print_test(f"sorting empty list",[], my_sorted([])) # type: ignore
 print_test(f"sorting list {test_numbers}", sorted(test_numbers), test_numbers_sorted)
-print_test(f"sorting list with {N_ITEMS} random numbers by key converter to strings", True,  is_sorted(sorted_numbers_by_str, key=lambda a: str(a)))
-print_test(f"sorting list with {N_ITEMS} random numbers ", True,  is_sorted(sorted_numbers))
+print_test(f"sorting list with {N_ITEMS} random numbers by key converter to strings", True,\
+     is_sorted(sorted_numbers_by_str, key=lambda a: str(a))\
+          and len(sorted_numbers) == len(unsorted_numbers))
+print_test(f"sorting list with {N_ITEMS} random numbers ", True,  is_sorted(sorted_numbers) and\
+            len(sorted_numbers) == len(unsorted_numbers))
 
 print_results()

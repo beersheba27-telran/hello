@@ -36,7 +36,7 @@ def __merge_parts[T, K](sorted_parts: list[list[T]], key: Callable[[T], T|K]|Non
     while  len_parts > 1:
        sorted_parts = __merge_in_pairs(sorted_parts, key)
        len_parts = len(sorted_parts)
-    return sorted_parts[0] 
+    return sorted_parts[0] if len_parts else [] #sorted_part has only one list that will be the sorted
 
 def __merge_in_pairs[T,K](sorted_parts:list[list[T]],
                            key: Callable[[T], T|K]|None) -> list[list[T]]:
@@ -44,12 +44,10 @@ def __merge_in_pairs[T,K](sorted_parts:list[list[T]],
     len_parts = len(sorted_parts)
     last_ind = len_parts - 1
     lim = last_ind if len_parts % 2 else len_parts
-    for i in range(0, lim , 2):
-        merged = __merge(sorted_parts[i], sorted_parts[i + 1],\
-                              key)
-        result.append(merged)
-            
-    if lim == last_ind: result.append(sorted_parts[last_ind]) 
+    result = [__merge(sorted_parts[i], sorted_parts[i + 1], key)\
+               for i in range(0, lim, 2)]
+    # for odd len_parts the last sorted part should be appended
+    if lim == last_ind: result.append(sorted_parts[last_ind])  
     return result 
 def my_sorted[T, K](items: Sequence[T],/,*, key:Callable[[T], T|K]|None=None) -> list[T]:
     """

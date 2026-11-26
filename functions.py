@@ -1,68 +1,34 @@
-from typing import Callable, Sequence
-def __merge[T, K](part1: list[T], part2: list[T], key: Callable[[T], T|K]|None)->list[T]:
-    i1 = i2 = 0
-    len1 = len(part1)
-    len2 = len(part2)
-    result: list[T] = []
-    while i1 < len1 and i2 < len2:
-        if key(part1[i1]) <= key(part2[i2]): # type: ignore
-            result.append(part1[i1])
-            i1 += 1
-        else:
-            result.append(part2[i2])
-            i2 += 1
-    result.extend(part1[i1:])  
-    result.extend(part2[i2:])  
-    return result
-
-def __get_sorted_part[T,K](items: Sequence[T], i: int, key: Callable[[T], T|K]|None)->list[T]:
-    result: list[T] = [items[i]]
-    lim: int = len(items) - 1
-    while i < lim and key(items[i]) <= key(items[i + 1]): # type: ignore
-        i += 1
-        result.append(items[i])
-    return result
-def __get_sorted_parts[T, K](items: Sequence[T],key: Callable[[T], T|K]|None)->list[list[T]]:
-     i = 0
-     size = len(items)
-     result: list[list[T]] = []
-     while i < size:
-        part = __get_sorted_part(items, i, key)
-        result.append(part)
-        i += len(part)
-     return result    
-def __merge_parts[T, K](sorted_parts: list[list[T]], key: Callable[[T], T|K]|None)->list[T]:
-    len_parts = len(sorted_parts)
-    while  len_parts > 1:
-       sorted_parts = __merge_in_pairs(sorted_parts, key)
-       len_parts = len(sorted_parts)
-    return sorted_parts[0] if len_parts else [] #sorted_part has only one list that will be the sorted
-
-def __merge_in_pairs[T,K](sorted_parts:list[list[T]],
-                           key: Callable[[T], T|K]|None) -> list[list[T]]:
-    result:list[list[T]] = []
-    len_parts = len(sorted_parts)
-    last_ind = len_parts - 1
-    lim = last_ind if len_parts % 2 else len_parts
-    result = [__merge(sorted_parts[i], sorted_parts[i + 1], key)\
-               for i in range(0, lim, 2)]
-    # for odd len_parts the last sorted part should be appended
-    if lim == last_ind: result.append(sorted_parts[last_ind])  
-    return result 
-def my_sorted[T, K](items: Sequence[T],/,*, key:Callable[[T], T|K]|None=None) -> list[T]:
+def minMaxAvg (numbers: list[int])->dict[str, int]:
     """
-    returns sorted by key list
-    implementation according the following algorithm:
-    1. Creating list of already sorted by key parts from "items"
-      (no additional sorting is required)
-    2. Merge of all parts from the created above list  
-     
+    returns dictionary with minimal, maximal and rounded to int avg values
+    that is dictionary with three pairs if list isn't empty and with no pairs otherwise
+    additional requirement: to use function "reduce" (from functools import reduce)
     """
-    if key is None: key = lambda a: a
-    sorted_parts = __get_sorted_parts(items, key)
-    result: list[T] = __merge_parts(sorted_parts, key) 
-    return result   
-    
-    
-
-         
+def get_occurrences_counts(strings: list[str])->list[str]:
+    """
+    returns list of ordered strings
+    each output string should have the following structure
+    <string from the input list>=><occurrencies count>
+    The output list should be sorted by two criteria:
+      descending order of counts and ascending order of strings themselves
+      example: input list is ["lmn", "vs", "y", "y", "ab", "a", "lmn", "lmn"]
+      the output list is ["lmn=>3", "y=>2", "a=>1", "ab=>1", "vs=>1"]
+    """
+def get_counts_strings(strings: list[str]) -> dict[int, list[str]] :
+    """
+    returns dictionary with an occurrence count as a key and sorted list of
+      strings with the count
+    example:  input list is ["lmn", "vs", "y", "y", "ab", "a", "lmn", "lmn"],
+    output dict is {3:["lmn"], 2:["y"], 1:["a","ab","vs"]} 
+    """ 
+def update_with_first_removing[K, V](cache: dict[K, V], entry: tuple[K, V], limit: int)->None:
+    """
+    if "cache" dictionary already has a key-value pair with first item of a given "entry" as the key
+    the key-value pair will be updated with second item of the entry 
+    if "cache" dictionary doesn't have a such key-value pair the given "entry" should be added.
+    But if the adding new pair will exeed a "limit" the first pair (isertion order) should be deleted
+    Example: "cache" - {"a":10, "b":20, "c":30} update_with_first_removing(cache, ("a", 40),3) will update pair with key "a"
+    and cache will be {"a":40, "b":20, "c":30}; update_with_first_removing(cache, ("d", 40),3) will add new pair,but
+    remove the first one, so cache will be { "b":20, "c":30, "d":40}
+    """        
+  

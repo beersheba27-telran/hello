@@ -1,7 +1,9 @@
-# HW 11 definition
-## Write function my_sorted  according to the comments in the file functions.py
-## print_tests.py contains 
-- Make sure all tests passed
+# HW 12 definition
+## Write functional tests according to the function comments from functions.py
+- Writing tests before the function implementations may make you ask the questions of type "What should be done"
+## Write the function implementations according to the function comments from functions.py
+- make sure that all functional tests passed
+
 
 
 

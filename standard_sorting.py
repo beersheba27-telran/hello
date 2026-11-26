@@ -1,5 +1,5 @@
 from sortedcontainers import SortedKeyList
-persons: SortedKeyList[tuple[str, int]] =\
+persons: SortedKeyList =\
  SortedKeyList([("Vasya", 10), ("Kolya", 60),("Abram", 60)], lambda p: p[1]);
 print(persons)
 print([person for person in persons])

@@ -1,7 +1,7 @@
 from random import randint
 from timeit import timeit
 from functions import my_sorted
-numbers:list[int] = [randint(1, 100000) for _ in range(100000)]
+numbers:list[int] = [randint(1, 100000) for _ in range(1000000)]
 
 print(f"running rime of standard 'sorted' for list containing {len(numbers)} numbers", \
       timeit(lambda : sorted(numbers),number=1))
